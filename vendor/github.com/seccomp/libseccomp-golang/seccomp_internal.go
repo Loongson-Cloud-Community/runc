@@ -67,6 +67,7 @@ const uint32_t C_ARCH_PPC64        = SCMP_ARCH_PPC64;
 const uint32_t C_ARCH_PPC64LE      = SCMP_ARCH_PPC64LE;
 const uint32_t C_ARCH_S390         = SCMP_ARCH_S390;
 const uint32_t C_ARCH_S390X        = SCMP_ARCH_S390X;
+const uint32_t C_ARCH_LOONGARCH64  = SCMP_ARCH_LOONGARCH64;
 
 #ifndef SCMP_ACT_LOG
 #define SCMP_ACT_LOG 0x7ffc0000U
@@ -443,6 +444,8 @@ func archFromNative(a C.uint32_t) (ScmpArch, error) {
 		return ArchS390, nil
 	case C.C_ARCH_S390X:
 		return ArchS390X, nil
+	case C.C_ARCH_LOONGARCH64:
+		return ArchLOONG64, nil
 	default:
 		return 0x0, fmt.Errorf("unrecognized architecture %#x", uint32(a))
 	}

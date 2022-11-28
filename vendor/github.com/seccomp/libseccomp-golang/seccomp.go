@@ -18,6 +18,7 @@ import (
 	"unsafe"
 )
 
+
 // C wrapping code
 
 // #cgo pkg-config: libseccomp
@@ -107,6 +108,8 @@ const (
 	// ArchMIPSEL64N32 represents 64-bit MIPS syscalls (little endian,
 	// 32-bit pointers)
 	ArchMIPSEL64N32 ScmpArch = iota
+	// ArchLOONG64 represents 64-bit LOONGARCH64 syscalls
+	ArchLOONG64 ScmpArch = iota
 	// ArchPPC represents 32-bit POWERPC syscalls
 	ArchPPC ScmpArch = iota
 	// ArchPPC64 represents 64-bit POWER syscalls (big endian)
@@ -214,6 +217,9 @@ func GetArchFromString(arch string) (ScmpArch, error) {
 		return ArchS390, nil
 	case "s390x":
 		return ArchS390X, nil
+	case "loong64", "loongarch64":
+		return ArchLOONG64, nil
+
 	default:
 		return ArchInvalid, fmt.Errorf("cannot convert unrecognized string %q", arch)
 	}
@@ -254,6 +260,8 @@ func (a ScmpArch) String() string {
 		return "s390"
 	case ArchS390X:
 		return "s390x"
+	case ArchLOONG64:
+		return "loong64"
 	case ArchNative:
 		return "native"
 	case ArchInvalid:
