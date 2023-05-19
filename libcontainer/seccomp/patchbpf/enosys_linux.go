@@ -67,6 +67,7 @@ const uint32_t C_AUDIT_ARCH_PPC64        = AUDIT_ARCH_PPC64;
 const uint32_t C_AUDIT_ARCH_PPC64LE      = AUDIT_ARCH_PPC64LE;
 const uint32_t C_AUDIT_ARCH_S390         = AUDIT_ARCH_S390;
 const uint32_t C_AUDIT_ARCH_S390X        = AUDIT_ARCH_S390X;
+const uint32_t C_AUDIT_ARCH_LOONGARCH64  = AUDIT_ARCH_LOONGARCH64;
 */
 import "C"
 
@@ -202,6 +203,8 @@ func archToNative(arch libseccomp.ScmpArch) (nativeArch, error) {
 		return nativeArch(C.C_AUDIT_ARCH_S390), nil
 	case libseccomp.ArchS390X:
 		return nativeArch(C.C_AUDIT_ARCH_S390X), nil
+	case libseccomp.ArchLOONGARCH64:
+		return nativeArch(C.C_AUDIT_ARCH_LOONGARCH64), nil
 	default:
 		return invalidArch, fmt.Errorf("unknown architecture: %v", arch)
 	}
