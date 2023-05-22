@@ -30,7 +30,7 @@ GPG_KEYID ?= asarai@suse.de
 .DEFAULT: runc
 
 runc:
-	$(GO_BUILD) -o runc .
+	$(GO_BUILD_STATIC) -o runc .
 
 all: runc recvtty sd-helper seccompagent
 
