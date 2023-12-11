@@ -18,7 +18,7 @@ ifneq ($(GO111MODULE),off)
 	MOD_VENDOR := "-mod=vendor"
 endif
 ifeq ($(shell $(GO) env GOOS),linux)
-	ifeq (,$(filter $(shell $(GO) env GOARCH),mips mipsle mips64 mips64le ppc64))
+	ifeq (,$(filter $(shell $(GO) env GOARCH),mips mipsle mips64 mips64le ppc64 loong64))
 		ifeq (,$(findstring -race,$(EXTRA_FLAGS)))
 			GO_BUILDMODE := "-buildmode=pie"
 		endif
