@@ -105,6 +105,7 @@ var testArches = []string{
 	"ppc64le",
 	"s390",
 	"s390x",
+	"loong64",
 }
 
 func testEnosysStub(t *testing.T, defaultAction configs.Action, arches []string) {
